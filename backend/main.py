@@ -20,12 +20,12 @@ app.add_middleware(
 )
 
 weights_path = "weights/generator_weights.pth"
-generator.load_state_dict(torch.load(weights_path, map_location=torch.device("cuda")))
+generator.load_state_dict(torch.load(weights_path, map_location=torch.device("cpu")))
 generator.eval()
 
-checkpoint = torch.load("weights/model_final.pth", weights_only=True, map_location=torch.device("cuda"))
+checkpoint = torch.load("weights/model_final.pth", weights_only=True, map_location=torch.device("cpu"))
 model.load_state_dict(checkpoint)
-device = torch.device("cuda")
+device = torch.device("cpu")
 generator=generator.to(device)
 
 class GenerateRequest(BaseModel):

@@ -145,9 +145,9 @@ def cosine_beta_schedule(timesteps, s=0.008, device='cpu'):
     sqrt_one_minus_alphas_cumprod = torch.sqrt(1.0 - alphas_cumprod)
     return betas, alphas_cumprod, sqrt_alphas_cumprod, sqrt_one_minus_alphas_cumprod
 
-betas, alphas_cumprod, sqrt_alphas_cumprod, sqrt_one_minus_alphas_cumprod = cosine_beta_schedule(1000, device='cuda')
+betas, alphas_cumprod, sqrt_alphas_cumprod, sqrt_one_minus_alphas_cumprod = cosine_beta_schedule(1000, device='cpu')
 
-def sample(model, n_samples=4, device='cuda', img_size=64, channels=3, sample_steps=50, eta=0.0):
+def sample(model, n_samples=4, device='cpu', img_size=64, channels=3, sample_steps=50, eta=0.0):
     model.eval()
     with torch.no_grad():
         T = betas.shape[0]
