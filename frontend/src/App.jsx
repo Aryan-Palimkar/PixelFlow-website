@@ -17,7 +17,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await api.post('http://localhost:8000/generate', {
+      const response = await api.post('https://pixelflow-website.onrender.com/generate', {
         model: selectedModel,
       });
       console.log('Response received:', response);
